@@ -1,0 +1,30 @@
+{
+  "name": "chingu-calendar-backend",
+  "version": "1.0.0",
+  "description": "calendar backend",
+  "main": "index.js",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "pg": "^8.5.1",
+    "pg-hstore": "^2.3.3",
+    "postgres": "^1.0.2",
+    "sequelize": "^6.6.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tisdale511/chingu-calendar-backend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tisdale511/chingu-calendar-backend/issues"
+  },
+  "homepage": "https://github.com/Tisdale511/chingu-calendar-backend#readme"
+}
