@@ -7,10 +7,14 @@ module.exports = (sequelize, Sequelize) => {
       description: {
         type: Sequelize.STRING
       }
+    },
+    { sequelize,
+      modelName: 'event',
+      timestamps: false
     }
   );
 
     
   
-  return Event;
+  return Event
 };

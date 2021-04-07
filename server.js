@@ -12,8 +12,6 @@ var corsOptions = {
 
 const db = require("./app/models");
 
-db.events.sync()
-
 db.sequelize.sync();
 
 app.use(cors(corsOptions));

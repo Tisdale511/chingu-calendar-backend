@@ -2,7 +2,7 @@ module.exports = {
     HOST: "localhost",
     USER: "tisdalefry",
     PASSWORD: null,
-    DB: "calendar_backend",
+    DB: "calendar",
     dialect: "postgres",
     pool: {
       max: 5,
