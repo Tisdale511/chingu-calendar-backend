@@ -6,11 +6,11 @@ module.exports = (sequelize, Sequelize) => {
       },
       description: {
         type: Sequelize.STRING
+      },
+      date: {
+        type: Sequelize.STRING,
+        allowNull: false
       }
-    },
-    { sequelize,
-      modelName: 'event',
-      timestamps: false
     }
   );
 
