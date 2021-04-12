@@ -14,6 +14,14 @@ module.exports = (sequelize, Sequelize) => {
       endTime: {
         type: Sequelize.STRING,
         allowNull: false
+      },
+      startDate: {
+        type: Sequelize.STRING,
+        allowNull: false
+      },
+      endDate: {
+        type: Sequelize.STRING,
+        allowNull: false
       }
     }
   );

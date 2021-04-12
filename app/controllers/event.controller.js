@@ -3,9 +3,62 @@ const Event = db.events;
 const Op = db.Sequelize.Op;
 
 // Create and Save a new Event
-exports.create = (req, res) => {
+// exports.create = (req, res) => {
   
-};
+// };
+
+exports.create = (req, res) => {
+    // Validate request
+    if (!req.body.name) {
+      res.status(400).send({
+        message: "Content can not be empty!"
+      });
+      return;
+    }
+    if (!req.body.startTime) {
+      res.status(400).send({
+        message: "Content can not be empty!"
+      });
+      return;
+    }
+    if (!req.body.endTime) {
+      res.status(400).send({
+        message: "Content can not be empty!"
+      });
+      return;
+    }
+    // if (!req.body.startDate) {
+    //   res.status(400).send({
+    //     message: "Content can not be empty!"
+    //   });
+    //   return;
+    // }
+    // if (!req.body.endDate) {
+    //   res.status(400).send({
+    //     message: "Content can not be empty!"
+    //   });
+    //   return;
+    // }
+
+    const event = {
+        name: req.body.name,
+        description: req.body.description,
+        startTime: req.body.startTime,
+        endTime: req.body.endTime    
+    };
+
+    Event.create(event)
+    .then(data => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while creating the Event."
+      });
+    });
+
+}
 
 // Retrieve all Events from the database.
 exports.findAll = (req, res) => {
