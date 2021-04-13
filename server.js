@@ -2,6 +2,8 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 
+
+
 const app = express();
 // app.use()   // use middleware function
 
@@ -11,6 +13,12 @@ var corsOptions = {
 
 
 const db = require("./app/models");
+const Event = db.events
+
+
+// db.sequelize.sync({ force: true }).then(() => {
+//   console.log("Drop and re-sync db.");
+// });
 
 db.sequelize.sync();
 
@@ -23,8 +31,19 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // simple route
-app.get("/", (req, res) => {
-  res.json({ message: "Testing" });
+app.get("/events", (req, res) => {
+  const test = Event.create(
+    {
+      name: 'event name test',
+      description: 'this is working',
+      // startTime: '3',
+      // endTime: '4',
+      startDate: new Date(),
+      endDate: new Date()
+    }
+  )
+  db.events.findAll()
+  .then(result => res.json(result))
 });
 
 // set port, listen for requests
