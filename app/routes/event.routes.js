@@ -18,8 +18,9 @@ module.exports = app => {
         .then(result => res.json(result))
     });
 
-    app.delete("/events", (req, res) => {
-        eventController.delete()
+    app.delete("/events/:id", (req, res) => {
+        console.log("request id is  ", req.params.id)
+        eventController.delete(req, res)
     })
 
 

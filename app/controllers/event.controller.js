@@ -76,22 +76,26 @@ exports.update = () => {
 
 exports.delete = async (req, res) => {
   const id = req.params.id;
+  console.log('deleting ID ', id)
 
   Event.destroy({
     where: { id: id }
   })
     .then(num => {
       if (num == 1) {
+        console.log("Event was deleted successfully!")
         res.send({
           message: "Event was deleted successfully!"
         });
       } else {
+        console.log(`Cannot delete Event with id=${id}. Maybe Event was not found!`)
         res.send({
           message: `Cannot delete Event with id=${id}. Maybe Event was not found!`
         });
       }
     })
     .catch(err => {
+      console.log("Could not delete Event with id=" + id)
       res.status(500).send({
         message: "Could not delete Event with id=" + id
       });
