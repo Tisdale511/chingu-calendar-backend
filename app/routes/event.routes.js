@@ -23,6 +23,15 @@ module.exports = app => {
         eventController.delete(req, res)
     })
 
+    app.post('/events', (req, res) => {
+
+        console.dir(req.body)
+        res.status(200).send({
+            message:
+            'success'
+          });
+    })
+
 
     // // Create a new event
     // router.post("/", events.create);

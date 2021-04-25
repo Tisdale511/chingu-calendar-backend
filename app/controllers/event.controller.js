@@ -4,9 +4,29 @@ const Op = db.Sequelize.Op;
 
 db.sequelize.sync();
 
+// db.sequelize.sync({ force: true }).then(() => {
+//   console.log("Drop and re-sync db.");
+// });
+
 // Create and Save a new Event
 // exports.create = (req, res) => {
-  
+//   const event = {
+//     name: req.body.name,
+//     description: req.body.description,
+//     startTime: req.body.startTime,
+//     endTime: req.body.endTime    
+// };
+
+// Event.create(event)
+// .then(data => {
+//   res.send(data);
+// })
+// .catch(err => {
+//   res.status(500).send({
+//     message:
+//       err.message || "Some error occurred while creating the Event."
+//   });
+// });
 // };
 
 // const test = Event.create(
@@ -19,25 +39,24 @@ db.sequelize.sync();
 // )
 
 
-//     const event = {
-//         name: req.body.name,
-//         description: req.body.description,
-//         startTime: req.body.startTime,
-//         endTime: req.body.endTime    
-//     };
+  // const event = {
+  //     name: req.body.name,
+  //     description: req.body.description,
+  //     startTime: req.body.startTime,
+  //     endTime: req.body.endTime    
+  // };
 
-//     Event.create(event)
-//     .then(data => {
-//       res.send(data);
-//     })
-//     .catch(err => {
-//       res.status(500).send({
-//         message:
-//           err.message || "Some error occurred while creating the Event."
-//       });
-//     });
+  // Event.create(event)
+  // .then(data => {
+  //   res.send(data);
+  // })
+  // .catch(err => {
+  //   res.status(500).send({
+  //     message:
+  //       err.message || "Some error occurred while creating the Event."
+  //   });
+  // });
 
-// }
 
 // simple route
 // app.get("/events", (req, res) => {
@@ -67,12 +86,6 @@ exports.findAll = async () => {
 exports.update = () => {
   
 };
-
-// Delete a Event with the specified id in the request
-// exports.delete = async (id) => {
-//   let result = await Event.delete(id)
-//   return result
-// };
 
 exports.delete = async (req, res) => {
   const id = req.params.id;

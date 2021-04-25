@@ -16,10 +16,6 @@ var corsOptions = {
 // const Event = db.events
 
 
-// db.sequelize.sync({ force: true }).then(() => {
-//   console.log("Drop and re-sync db.");
-// });
-
 // db.sequelize.sync();
 
 // app.use('app/routes/event.routes', eventsRouter)
@@ -27,10 +23,10 @@ var corsOptions = {
 app.use(cors(corsOptions));
 
 // parse requests of content-type - application/json
-app.use(bodyParser.json());
+app.use(express.json());
 
 // parse requests of content-type - application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true }));
 
 
 const eventRoutes = require("./app/routes/event.routes");
