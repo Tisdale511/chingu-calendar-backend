@@ -1,7 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-
+// const eventsRouter = require(".app/routes/event.routes")
 
 
 const app = express();
@@ -12,15 +12,17 @@ var corsOptions = {
 };
 
 
-const db = require("./app/models");
-const Event = db.events
+// const db = require("./app/models");
+// const Event = db.events
 
 
 // db.sequelize.sync({ force: true }).then(() => {
 //   console.log("Drop and re-sync db.");
 // });
 
-db.sequelize.sync();
+// db.sequelize.sync();
+
+// app.use('app/routes/event.routes', eventsRouter)
 
 app.use(cors(corsOptions));
 
@@ -30,22 +32,9 @@ app.use(bodyParser.json());
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// simple route
-app.get("/events", (req, res) => {
-  const test = Event.create(
-    {
-      name: 'event name test',
-      description: 'this is working',
-      // startTime: '3',
-      // endTime: '4',
-      startDate: new Date(),
-      endDate: new Date()
-    }
-  )
-  db.events.findAll()
-  .then(result => res.json(result))
-});
 
+const eventRoutes = require("./app/routes/event.routes");
+eventRoutes(app);
 // set port, listen for requests
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

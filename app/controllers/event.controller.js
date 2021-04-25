@@ -1,55 +1,23 @@
-const db = require("../models");
-const Event = db.events;
+const db = require("../models/index");
+const Event = db.Event;
 const Op = db.Sequelize.Op;
+
+db.sequelize.sync();
 
 // Create and Save a new Event
 // exports.create = (req, res) => {
   
 // };
 
-const test = Event.create(
-    {
-      name: 'event name test',
-      description: 'this is working',
-      startTime: '3',
-      endTime: '4'
-    }
-)
+// const test = Event.create(
+//     {
+//       name: 'front end stuff',
+//       description: 'tuesday',
+//       startTime: '3',
+//       endTime: '4'
+//     }
+// )
 
-// exports.create = (req, res) => {
-//     // Validate request
-//     if (!req.body.name) {
-//       res.status(400).send({
-//         message: "Content can not be empty!"
-//       });
-//       return;
-//     }
-//     if (!req.body.startTime) {
-//       res.status(400).send({
-//         message: "Content can not be empty!"
-//       });
-//       return;
-//     }
-//     if (!req.body.endTime) {
-//       res.status(400).send({
-//         message: "Content can not be empty!"
-//       });
-//       return;
-//     }
-//     // if (!req.body.startDate) {
-//     //   res.status(400).send({
-//     //     message: "Content can not be empty!"
-//     //   });
-//     //   return;
-//     // }
-//     // if (!req.body.endDate) {
-//     //   res.status(400).send({
-//     //     message: "Content can not be empty!"
-//     //   });
-//     //   return;
-//     // }
-
-    
 
 //     const event = {
 //         name: req.body.name,
@@ -71,32 +39,67 @@ const test = Event.create(
 
 // }
 
+// simple route
+// app.get("/events", (req, res) => {
+//   // const test = Event.create(
+//   //   {
+//   //     name: 'progess being made',
+//   //     description: 'dots appear on days with events',
+//   //     // startTime: '3',
+//   //     // endTime: '4',
+//   //     startDate: new Date(),
+//   //     endDate: new Date()
+//   //   }
+//   // )
+//   db.events.findAll()
+//   .then(result => res.json(result))
+// });
+
 // Retrieve all Events from the database.
-exports.findAll = (req, res) => {
-  
+exports.findAll = async () => {
+  console.log(Event)
+  let result = await Event.findAll()
+  return result
 };
 
-// Find a single Event with an id
-exports.findOne = (req, res) => {
-  
-};
 
 // Update a Event by the id in the request
-exports.update = (req, res) => {
+exports.update = () => {
   
 };
 
 // Delete a Event with the specified id in the request
-exports.delete = (req, res) => {
-  
+// exports.delete = async (id) => {
+//   let result = await Event.delete(id)
+//   return result
+// };
+
+exports.delete = async (req, res) => {
+  const id = req.params.id;
+
+  Event.destroy({
+    where: { id: id }
+  })
+    .then(num => {
+      if (num == 1) {
+        res.send({
+          message: "Event was deleted successfully!"
+        });
+      } else {
+        res.send({
+          message: `Cannot delete Event with id=${id}. Maybe Event was not found!`
+        });
+      }
+    })
+    .catch(err => {
+      res.status(500).send({
+        message: "Could not delete Event with id=" + id
+      });
+    });
 };
 
 // Delete all Events from the database.
-exports.deleteAll = (req, res) => {
+exports.deleteAll = () => {
   
 };
 
-// Find all published Events
-exports.findAllPublished = (req, res) => {
-  
-};
