@@ -9,25 +9,26 @@ db.sequelize.sync();
 // });
 
 // Create and Save a new Event
-// exports.create = (req, res) => {
-//   const event = {
-//     name: req.body.name,
-//     description: req.body.description,
-//     startTime: req.body.startTime,
-//     endTime: req.body.endTime    
-// };
+exports.create = (req, res) => {
+  // const event = {
+  //   name: req.body.name,
+  //   description: req.body.description,
+  //   startTime: req.body.startTime,
+  //   endTime: req.body.endTime,
+  //   startDate: req.body.startDate    
+  // };
 
-// Event.create(event)
-// .then(data => {
-//   res.send(data);
-// })
-// .catch(err => {
-//   res.status(500).send({
-//     message:
-//       err.message || "Some error occurred while creating the Event."
-//   });
-// });
-// };
+  Event.create(req.body)
+  .then(data => {
+    res.send(data);
+  })
+  .catch(err => {
+    res.status(500).send({
+      message:
+        err.message || "Some error occurred while creating the Event."
+    });
+  });
+};
 
 // const test = Event.create(
 //     {

@@ -24,12 +24,7 @@ module.exports = app => {
     })
 
     app.post('/events', (req, res) => {
-
-        console.dir(req.body)
-        res.status(200).send({
-            message:
-            'success'
-          });
+        eventController.create(req, res)
     })
 
 
