@@ -4,22 +4,12 @@ module.exports = app => {
 
 
     app.get("/events", (req, res) => {
-        // const test = Event.create(
-        //   {
-        //     name: 'progess being made',
-        //     description: 'dots appear on days with events',
-        //     // startTime: '3',
-        //     // endTime: '4',
-        //     startDate: new Date(),
-        //     endDate: new Date()
-        //   }
-        // )
         eventController.findAll()
         .then(result => res.json(result))
     });
 
     app.delete("/events/:id", (req, res) => {
-        console.log("request id is  ", req.params.id)
+        // console.log("request id is  ", req.params.id)
         eventController.delete(req, res)
     })
 
@@ -27,24 +17,12 @@ module.exports = app => {
         eventController.create(req, res)
     })
 
-
-    // // Create a new event
-    // router.post("/", events.create);
-
-    // // Retrieve all events
-    // router.get("/", events.findAll);
-
-    // // Retrieve all published events
-    // router.get("/published", events.findAllPublished);
-
-    // // Retrieve a single event with id
-    // router.get("/:id", events.findOne);
+    app.put('events/:id', (req, res) => {
+        eventController.update(req, res)
+    })
 
     // // Update a event with id
     // router.put("/:id", events.update);
-
-    // // Delete a event with id
-    // router.delete("/:id", events.delete);
 
     // // Delete all events
     // router.delete("/", events.deleteAll);
