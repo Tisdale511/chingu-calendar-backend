@@ -34,7 +34,11 @@ exports.create = (req, res) => {
 
 // Update an Event by the id in the request
 exports.update = (req, res) => {
-  Event.update(req.body)
+  const id = req.params.id;
+ 
+
+  Event.update(req.body, {where: { id: id}})
+  
   .then(data => {
     res.send(data);
   })

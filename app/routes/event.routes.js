@@ -17,7 +17,7 @@ module.exports = app => {
         eventController.create(req, res)
     })
 
-    app.put('events/:id', (req, res) => {
+    app.put('/events/:id', (req, res) => {
         eventController.update(req, res)
     })
 
