@@ -7,11 +7,7 @@ module.exports = (sequelize, Sequelize) => {
       description: {
         type: Sequelize.STRING
       },
-      startTime: {
-        type: Sequelize.DATE,
-        allowNull: false
-      },
-      endTime: {
+      endDate: {
         type: Sequelize.DATE,
         allowNull: false
       },
