@@ -31,7 +31,7 @@ app.use(express.urlencoded({ extended: true }));
 const eventRoutes = require("./app/routes/event.routes");
 eventRoutes(app);
 // set port, listen for requests
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || chingu-calendar-backend.herokuapp.com;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });

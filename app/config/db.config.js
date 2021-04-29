@@ -1,5 +1,5 @@
 module.exports = {
-    HOST: "localhost",
+    HOST: "chingu-calendar-backend.herokuapp.com",
     USER: "tisdalefry",
     PASSWORD: null,
     DB: "calendar",
