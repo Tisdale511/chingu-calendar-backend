@@ -6,9 +6,9 @@ const cors = require("cors");
 const app = express();
 // app.use()   // use middleware function
 
-// var corsOptions = {
-//   origin: "http://localhost:3000"
-// };
+var corsOptions = {
+  origin: "http://localhost:3001"
+};
 
 
 // const db = require("./app/models");
@@ -19,7 +19,7 @@ const app = express();
 
 // app.use('app/routes/event.routes', eventsRouter)
 
-// app.use(cors(corsOptions));
+app.use(cors(corsOptions));
 
 // parse requests of content-type - application/json
 app.use(express.json());
@@ -31,7 +31,7 @@ app.use(express.urlencoded({ extended: true }));
 const eventRoutes = require("./app/routes/event.routes");
 eventRoutes(app);
 // set port, listen for requests
-const PORT = process.env.DATABASE_URL || 3000;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });
