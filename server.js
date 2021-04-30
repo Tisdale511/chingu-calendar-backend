@@ -19,7 +19,7 @@ const app = express();
 
 // app.use('app/routes/event.routes', eventsRouter)
 
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
 
 // parse requests of content-type - application/json
 app.use(express.json());
