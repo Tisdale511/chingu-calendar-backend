@@ -5,18 +5,19 @@ const dbConfig = require("../config/db.config.js");
 // const Sequelize = sequelizeExportStuff.Sequelize;
 
 const { Sequelize } = require("sequelize");
-const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
-  host: dbConfig.HOST,
-  dialect: dbConfig.dialect,
-//   operatorsAliases: false, // does not work in this version
+const sequelize = new Sequelize(process.env.DATABASE_URL)
+// const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
+//   host: dbConfig.HOST,
+//   dialect: dbConfig.dialect,
+// //   operatorsAliases: false, // does not work in this version
 
-  pool: {
-    max: dbConfig.pool.max,
-    min: dbConfig.pool.min,
-    acquire: dbConfig.pool.acquire,
-    idle: dbConfig.pool.idle
-  }
-});
+//   pool: {
+//     max: dbConfig.pool.max,
+//     min: dbConfig.pool.min,
+//     acquire: dbConfig.pool.acquire,
+//     idle: dbConfig.pool.idle
+//   }
+// });
 
 const db = {};
 
